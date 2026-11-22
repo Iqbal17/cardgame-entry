@@ -1,0 +1,200 @@
+/* Ember Duel — table, cards and screens. All art is CSS shapes and glyphs. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: #101418;
+  color: #f2ead8;
+  font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+  overflow: hidden;
+}
+#app { height: 100vh; display: flex; flex-direction: column; }
+.hidden { display: none !important; }
+
+/* ---------- top bar ---------- */
+#topbar {
+  display: flex; align-items: center; gap: 14px;
+  padding: 8px 16px; background: #171c22; border-bottom: 2px solid #2b323c;
+}
+.brand { font-size: 20px; font-weight: 900; letter-spacing: 3px; color: #ffb347; }
+.turn-pill {
+  margin-left: auto; background: #24303a; border: 1px solid #3a4a58;
+  border-radius: 999px; padding: 3px 14px; font-weight: 700; font-size: 14px;
+}
+#helpBtn {
+  width: 30px; height: 30px; border-radius: 50%; border: 2px solid #ffb347;
+  background: transparent; color: #ffb347; font-size: 16px; font-weight: 900;
+  cursor: pointer;
+}
+
+/* ---------- screens ---------- */
+.screen { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+#titleScreen, #endScreen {
+  align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at 50% 30%, #2a2118 0%, #101418 65%);
+}
+.title-card {
+  text-align: center; max-width: 560px; padding: 28px 34px;
+  background: rgba(23, 28, 34, .92); border: 2px solid #3a4a58; border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .55);
+}
+.title-glyphs { font-size: 34px; letter-spacing: 10px; margin-bottom: 6px; }
+.glyph.flame { color: #ff5a3c; } .glyph.tide { color: #4db8ff; }
+.glyph.thorn { color: #7ddc5a; } .glyph.spark { color: #ffd23c; }
+.title-card h1 { font-size: 52px; letter-spacing: 6px; color: #ffb347; margin-bottom: 6px; }
+.tagline { font-size: 17px; color: #cfc4a8; margin-bottom: 14px; }
+.rules-blurb { font-size: 15px; line-height: 1.55; color: #e8dfc8; margin-bottom: 20px; }
+.big-btn {
+  background: linear-gradient(#ffb347, #ff8a2a); color: #241300;
+  border: none; border-radius: 12px; padding: 13px 34px;
+  font-size: 20px; font-weight: 900; letter-spacing: 2px; cursor: pointer;
+  box-shadow: 0 4px 0 #a34d00, 0 8px 18px rgba(0, 0, 0, .4);
+}
+.big-btn:hover { filter: brightness(1.08); }
+.big-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #a34d00; }
+.hint { margin-top: 16px; font-size: 13px; color: #9aa7b4; }
+kbd {
+  background: #2b323c; border: 1px solid #55636f; border-bottom-width: 3px;
+  border-radius: 5px; padding: 1px 7px; font-family: inherit; font-size: 12px;
+}
+
+/* ---------- the table ---------- */
+#table {
+  background: radial-gradient(ellipse at 50% 45%, #1d4d33 0%, #123324 55%, #0b241a 100%);
+  padding: 6px 18px 8px;
+}
+.zone { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
+#rivalZone { flex: 1; }
+#playerZone { flex: 1.15; }
+#midRow {
+  display: flex; align-items: center; gap: 14px;
+  padding: 2px; min-height: 54px;
+}
+.log {
+  flex: 1; height: 50px; overflow: hidden; font-size: 13px; line-height: 1.4;
+  color: #ffe9b0; background: rgba(0, 0, 0, .35); border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 10px; padding: 7px 12px;
+}
+.log .fresh { color: #ffd23c; font-weight: 700; }
+.mid-buttons { display: flex; flex-direction: column; gap: 8px; }
+.action-btn {
+  background: linear-gradient(#3fae6a, #2c8a4f); color: #fff; border: none;
+  border-radius: 10px; padding: 10px 18px; font-size: 15px; font-weight: 900;
+  letter-spacing: 1px; cursor: pointer; box-shadow: 0 3px 0 #1c5c33;
+  white-space: nowrap;
+}
+.action-btn:hover:not(:disabled) { filter: brightness(1.1); }
+.action-btn:disabled { opacity: .45; cursor: default; }
+.action-btn.ghost { background: #2b323c; box-shadow: 0 3px 0 #161b20; font-size: 12px; padding: 7px 14px; }
+
+/* ---------- duelists ---------- */
+.duelist { display: flex; align-items: center; gap: 12px; }
+.duelist.rival { justify-content: flex-start; }
+.duelist.you { justify-content: flex-start; }
+.portrait {
+  width: 46px; height: 46px; border-radius: 50%; flex: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 23px; border: 3px solid rgba(255, 255, 255, .35);
+}
+.rival-face { background: #5a1f16; color: #ff8a6a; }
+.you-face { background: #123a5c; color: #7cc4ff; }
+.duelist-info { min-width: 0; }
+.duelist-name { font-size: 14px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 3px; }
+.life-row, .ember-row { display: flex; align-items: center; gap: 8px; }
+.life-label, .ember-label { font-size: 11px; font-weight: 900; letter-spacing: 2px; color: #b9c4ce; }
+.life-bar {
+  width: 200px; height: 14px; background: rgba(0, 0, 0, .5);
+  border: 1px solid rgba(255, 255, 255, .25); border-radius: 999px; overflow: hidden;
+}
+.life-fill { height: 100%; transition: width .35s ease; }
+.rival-fill { background: linear-gradient(90deg, #ff5a3c, #ff8a5c); }
+.you-fill { background: linear-gradient(90deg, #37c978, #7ddc5a); }
+.life-num { font-size: 20px; font-weight: 900; min-width: 30px; }
+.shield-badge {
+  background: #2b6cb0; color: #fff; border-radius: 999px; padding: 1px 9px;
+  font-size: 13px; font-weight: 900;
+}
+.ember-row { margin-top: 2px; }
+.ember-num {
+  font-size: 18px; font-weight: 900; color: #ffb347;
+  background: rgba(0, 0, 0, .35); border-radius: 8px; padding: 0 10px;
+}
+.deck-note { font-size: 12px; color: #b9c4ce; margin-left: 8px; }
+.deck-pile {
+  margin-left: auto; width: 50px; height: 68px; border-radius: 8px;
+  background: linear-gradient(135deg, #3a2c5c, #241a3a);
+  border: 2px solid #6b5a9e; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900; color: #d6c9ff;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, .4);
+}
+.play-slot {
+  min-height: 22px; font-size: 13px; color: #ffe9b0; font-style: italic;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ---------- hands & cards ---------- */
+.hand { display: flex; gap: 10px; justify-content: center; align-items: flex-end; min-height: 134px; padding: 2px 0; }
+.card {
+  width: 96px; height: 132px; border-radius: 12px; padding: 7px 7px 5px;
+  display: flex; flex-direction: column; position: relative;
+  background: linear-gradient(180deg, #fdf6e3, #efe3c2);
+  color: #221a10; border: 3px solid #8a7a55;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, .45);
+  font-size: 13px; user-select: none;
+}
+.card .cost {
+  position: absolute; top: -9px; left: -9px; width: 30px; height: 30px;
+  border-radius: 50%; background: #ff8a2a; color: #fff; border: 2px solid #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900; box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
+}
+.card .suit-glyph { font-size: 22px; line-height: 1; text-align: center; margin-top: 3px; }
+.card .card-name { font-size: 12px; font-weight: 900; text-align: center; margin-top: 2px; }
+.card .card-effect { font-size: 11px; line-height: 1.25; text-align: center; margin-top: 2px; color: #4a3f28; }
+.card .card-suit { font-size: 10px; }
+.card .card-suit { margin-top: auto; text-align: center; font-size: 11px; font-weight: 900; letter-spacing: 1px; }
+.card.flame { border-top: 8px solid #ff5a3c; } .card.flame .suit-glyph, .card.flame .card-suit { color: #d63a1e; }
+.card.tide { border-top: 8px solid #4db8ff; } .card.tide .suit-glyph, .card.tide .card-suit { color: #1d6fb8; }
+.card.thorn { border-top: 8px solid #5dbb3a; } .card.thorn .suit-glyph, .card.thorn .card-suit { color: #2f7a1e; }
+.card.spark { border-top: 8px solid #ffd23c; } .card.spark .suit-glyph, .card.spark .card-suit { color: #a67c00; }
+.player-hand .card { cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; }
+.player-hand .card:hover { transform: translateY(-12px) scale(1.05); box-shadow: 0 12px 22px rgba(0, 0, 0, .55); }
+.player-hand .card.unplayable { opacity: .55; filter: grayscale(.5); }
+.player-hand .card.unplayable:hover { transform: none; }
+.player-hand .card.combo-ready { outline: 3px solid #ffd23c; outline-offset: 2px; }
+.card.just-played { animation: snap .3s ease; }
+@keyframes snap { 0% { transform: scale(1.15) rotate(-2deg); } 100% { transform: scale(1); } }
+
+.rival-hand .card {
+  width: 60px; height: 84px; padding: 0;
+  background: linear-gradient(135deg, #3a2c5c, #241a3a);
+  border: 2px solid #6b5a9e; cursor: default;
+  align-items: center; justify-content: center;
+}
+.rival-hand .card .back-glyph { font-size: 26px; color: #b7a6e8; }
+.rival-hand .card.played-out { opacity: .25; }
+
+/* ---------- end screens ---------- */
+.end-glyph { font-size: 54px; margin-bottom: 4px; }
+#endScreen.win .end-glyph { color: #ffd23c; }
+#endScreen.win h1 { color: #ffd23c; }
+#endScreen.loss .end-glyph { color: #7d8a99; }
+#endScreen.loss h1 { color: #ff8a6a; }
+.end-stats { display: flex; gap: 18px; justify-content: center; margin: 12px 0 20px; font-size: 15px; }
+.end-stats b { font-size: 20px; color: #ffb347; }
+
+/* ---------- help overlay ---------- */
+.overlay {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, .65);
+  display: flex; align-items: center; justify-content: center; z-index: 10;
+}
+.help-card {
+  background: #171c22; border: 2px solid #3a4a58; border-radius: 16px;
+  padding: 24px 28px; max-width: 520px;
+}
+.help-card h2 { color: #ffb347; margin-bottom: 12px; letter-spacing: 2px; }
+.help-card ul { margin: 0 0 18px 18px; font-size: 15px; line-height: 1.6; }
+.help-card li { margin-bottom: 6px; }
+.flame-t { color: #ff8a6a; font-weight: 900; }
+.tide-t { color: #7cc4ff; font-weight: 900; }
+.thorn-t { color: #8fdd6a; font-weight: 900; }
+.spark-t { color: #ffd23c; font-weight: 900; }
