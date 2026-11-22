@@ -35,9 +35,13 @@ function copyTree(sourceDir: string, targetDir: string): void {
 }
 
 // Start from a clean output directory so a stale file from an earlier run
-// can never ride along into the entry.
-rmSync(outputDir, { recursive: true, force: true });
+// can never ride along into the entry. The output directory itself is never
+// removed: in the grader it is a mount point (/output) and removing it
+// fails, so empty only its contents.
 mkdirSync(outputDir, { recursive: true });
+for (const entry of readdirSync(outputDir)) {
+  rmSync(join(outputDir, entry), { recursive: true, force: true });
+}
 
 copyTree(join(repoRoot, 'game'), join(outputDir, 'game'));
 copyTree(join(repoRoot, 'screenshots'), join(outputDir, 'screenshots'));
